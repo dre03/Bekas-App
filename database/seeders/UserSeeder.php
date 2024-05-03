@@ -1,0 +1,176 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $users = [
+            [
+                'name' => 'Andre Apriyana',
+                'username' => 'andre',
+                'password' => 'andre123',
+                'email' => 'andre@email.com',
+                'phone_number' => '08745728375',
+                'birth_date' => '2001-10-10',
+                'birth_place' => 'Bogor',
+                'gender' => 'Laki-Laki',
+                'address' => 'Bogor, Jawa Barat',
+                'profile_pic' => 'andre.jpg',
+                'role_id' => 1,
+            ], [
+                'name' => 'Udin',
+                'username' => 'udin',
+                'password' => 'udin123',
+                'email' => 'udin@email.com',
+                'phone_number' => '08745728375',
+                'birth_date' => '2001-10-10',
+                'birth_place' => 'Bogor',
+                'gender' => 'Laki-Laki',
+                'address' => 'Bogor, Jawa Barat',
+                'profile_pic' => 'udin.jpg',
+                'role_id' => 2,
+            ], [
+                'name' => 'Rina Wijaya',
+                'username' => 'rina',
+                'password' => 'rina123',
+                'email' => 'rina@email.com',
+                'phone_number' => '08745728376',
+                'birth_date' => '1995-05-20',
+                'birth_place' => 'Jakarta',
+                'gender' => 'Perempuan',
+                'address' => 'Jakarta Pusat, DKI Jakarta',
+                'profile_pic' => 'rina.jpg',
+                'role_id' => 1,
+            ],
+            [
+                'name' => 'Budi Santoso',
+                'username' => 'budi',
+                'password' => 'budi123',
+                'email' => 'budi@email.com',
+                'phone_number' => '08745728377',
+                'birth_date' => '1990-12-15',
+                'birth_place' => 'Surabaya',
+                'gender' => 'Laki-Laki',
+                'address' => 'Surabaya, Jawa Timur',
+                'profile_pic' => 'budi.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Siti Rahmawati',
+                'username' => 'siti',
+                'password' => 'siti123',
+                'email' => 'siti@email.com',
+                'phone_number' => '08745728378',
+                'birth_date' => '1988-08-25',
+                'birth_place' => 'Bandung',
+                'gender' => 'Perempuan',
+                'address' => 'Bandung, Jawa Barat',
+                'profile_pic' => 'siti.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Joko Susilo',
+                'username' => 'joko',
+                'password' => 'joko123',
+                'email' => 'joko@email.com',
+                'phone_number' => '08745728379',
+                'birth_date' => '1987-03-12',
+                'birth_place' => 'Semarang',
+                'gender' => 'Laki-Laki',
+                'address' => 'Semarang, Jawa Tengah',
+                'profile_pic' => 'joko.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Dewi Lestari',
+                'username' => 'dewi',
+                'password' => 'dewi123',
+                'email' => 'dewi@email.com',
+                'phone_number' => '08745728380',
+                'birth_date' => '1993-09-08',
+                'birth_place' => 'Yogyakarta',
+                'gender' => 'Perempuan',
+                'address' => 'Yogyakarta, DI Yogyakarta',
+                'profile_pic' => 'dewi.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Agus Setiawan',
+                'username' => 'agus',
+                'password' => 'agus123',
+                'email' => 'agus@email.com',
+                'phone_number' => '08745728381',
+                'birth_date' => '1991-11-30',
+                'birth_place' => 'Bandung',
+                'gender' => 'Laki-Laki',
+                'address' => 'Bandung, Jawa Barat',
+                'profile_pic' => 'agus.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Siska Fitriani',
+                'username' => 'siska',
+                'password' => 'siska123',
+                'email' => 'siska@email.com',
+                'phone_number' => '08745728382',
+                'birth_date' => '1994-04-18',
+                'birth_place' => 'Surabaya',
+                'gender' => 'Perempuan',
+                'address' => 'Surabaya, Jawa Timur',
+                'profile_pic' => 'siska.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Rudi Hermawan',
+                'username' => 'rudi',
+                'password' => 'rudi123',
+                'email' => 'rudi@email.com',
+                'phone_number' => '08745728383',
+                'birth_date' => '1989-07-23',
+                'birth_place' => 'Semarang',
+                'gender' => 'Laki-Laki',
+                'address' => 'Semarang, Jawa Tengah',
+                'profile_pic' => 'rudi.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Lina Sari',
+                'username' => 'lina',
+                'password' => 'lina123',
+                'email' => 'lina@email.com',
+                'phone_number' => '08745728384',
+                'birth_date' => '1996-12-10',
+                'birth_place' => 'Yogyakarta',
+                'gender' => 'Perempuan',
+                'address' => 'Yogyakarta, DI Yogyakarta',
+                'profile_pic' => 'lina.jpg',
+                'role_id' => 2,
+            ],
+            [
+                'name' => 'Eko Prabowo',
+                'username' => 'eko',
+                'password' => 'eko123',
+                'email' => 'eko@email.com',
+                'phone_number' => '08745728385',
+                'birth_date' => '1990-02-05',
+                'birth_place' => 'Jakarta',
+                'gender' => 'Laki-Laki',
+                'address' => 'Jakarta Pusat, DKI Jakarta',
+                'profile_pic' => 'eko.jpg',
+                'role_id' => 2,
+            ],
+        ];
+
+        foreach ($users as $key => $val) {
+            User::create($val);
+        }
+    }
+}
