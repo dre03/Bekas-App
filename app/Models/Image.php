@@ -9,11 +9,11 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['product_id','path'];
 
-    public function products()
+    public function product()
     {
-        return $this->belongsTo(Product::class, 'image_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
 

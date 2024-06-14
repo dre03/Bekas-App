@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategorieController extends Controller
 {
     public function index()
     {
-        $notif = $this->notif();
-        $cateries = Categorie::latest()->paginate();
+        $cateries = Categorie::orderBy('name', 'asc')->latest()->paginate();
         return view('pages.categorie.index', [
-                'notif' => $notif,
                 'title' => 'Kategori',
                 'categories' => $cateries
             ]
@@ -23,14 +22,22 @@ class CategorieController extends Controller
     {
         //validate form
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ], [
             'name.required' => 'Nama wajib diisi',
+            'name.unique' => 'Kategori sudah ada',
+            'image.required' => 'Image wajib diisi',
+            'image.mimes' => 'Format File harus berupa jpeg,jpg,png',
         ]);
+
+        $image = $request->file('image');
+        $image->storeAs('public/categories', $image->hashName());
 
         //create Moderator
         Categorie::create([
             'name' => $request->name,
+            'image' => $image->hashName(),
         ]);
 
         //redirect to index
@@ -41,16 +48,31 @@ class CategorieController extends Controller
     {
         //validate form
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
+            'image' => 'image|mimes:jpeg,jpg,png|max:2048'
         ], [
             'name.required' => 'Nama wajib diisi',
+            'name.unique' => 'kategori sudah ada',
+            'image.mimes' => 'Format File harus berupa jpeg,jpg,png',
         ]);
 
         $categorie = Categorie::findOrFail($id);
 
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image->storeAs('public/categories', $image->hashName());
+            //delete old image
+            Storage::delete('public/categories/' . $categorie->image);
+
         $categorie->update([
             'name' => $request->name,
+            'image' => $image->hashName(),
         ]);
+        } else{
+            $categorie->update([
+                'name' => $request->name,
+            ]);
+        }
 
         //redirect to index
         return redirect()->route('categorie')->with(['success' => 'Data Berhasil Diubah!']);
@@ -59,7 +81,11 @@ class CategorieController extends Controller
     public function destroy($id)
     {
         $categorie = Categorie::findOrFail($id);
+        if ($categorie->subcategories()->exists()) {
+            return redirect()->back()->with(['warning' => 'Data tidak bisa dihapus karena terkait dengan data lain!']);
+        }
         $categorie->delete();
+        Storage::delete('public/categories/' . $categorie->image);
         //redirect to index
         return redirect()->route('categorie')->with(['success' => 'Data Berhasil Dihapus!']);
     }

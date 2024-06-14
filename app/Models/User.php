@@ -23,8 +23,6 @@ class User extends Authenticatable
         'password',
         'username',
         'phone_number',
-        'birth_date',
-        'birth_pleace',
         'gender',
         'address',
         'profile_pic',
@@ -67,5 +65,14 @@ class User extends Authenticatable
     public function notifications()
     {
         return $this->hasMany(Notification::class, 'created_for', 'id');
+    }
+
+    public function village()
+    {
+        return $this->belongsTo(Village::class, 'village_id', 'id');
+    }
+
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class, 'user_id', 'id');
     }
 }

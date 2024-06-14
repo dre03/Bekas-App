@@ -10,14 +10,12 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $notif = $this->notif();
         $products = Product::latest()->paginate(10);
         $statusProducts = StatusProduct::all();
         return view('pages.product.index', [
             'title' => 'Produk',
             'products' => $products,
             'statusProducts' => $statusProducts,
-            'notif' => $notif
         ]);
     }
 

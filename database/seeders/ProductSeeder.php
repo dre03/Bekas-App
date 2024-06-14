@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class ProductSeeder extends Seeder
 {
@@ -13,6 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+
         $products = [
             [
                 'name' => 'Honda Beat',
@@ -23,9 +24,9 @@ class ProductSeeder extends Seeder
                 'condition' => 'Bekas',
                 'price' => 1000000,
                 'description' => 'Jual Motor Honda bekas masih mulus jangan ragu',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 2,
+                'village_id' => fake()->numberBetween(1, 83761),
                 'status_id' => 1,
             ], [
                 'name' => 'iPhone 13 Pro',
@@ -36,9 +37,9 @@ class ProductSeeder extends Seeder
                 'condition' => 'Baru',
                 'price' => 12990000,
                 'description' => 'iPhone 13 Pro dengan layar Super Retina XDR, chip A15 Bionic, dan sistem kamera Pro.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 4,
+                'village_id' => fake()->numberBetween(1,83761),
                 'status_id' => 1,
             ],
             [
@@ -50,9 +51,9 @@ class ProductSeeder extends Seeder
                 'condition' => 'Baru',
                 'price' => 550000000,
                 'description' => 'Toyota Camry Hybrid dengan teknologi hibrida, elegan dan hemat bahan bakar.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 1,
+                'village_id' => fake()->numberBetween(1,83761),
                 'status_id' => 1,
             ],
             [
@@ -64,24 +65,10 @@ class ProductSeeder extends Seeder
                 'condition' => 'Baru',
                 'price' => 800000000,
                 'description' => 'Apartemen mewah dengan fasilitas lengkap, lokasi strategis di tengah kota.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 6,
+                'village_id' => fake()->numberBetween(1,83761),
                 'status_id' => 1,
-            ],
-            [
-                'name' => 'Adidas Ultraboost 21 Running Shoes',
-                'brand' => 'Adidas',
-                'production_year' => 2021,
-                'type' => 'Sepatu Lari',
-                'color' => 'Core Black / Solar Red',
-                'condition' => 'Baru',
-                'price' => 1899000,
-                'description' => 'Sepatu lari dengan teknologi Boost untuk kenyamanan maksimal dan performa lari yang unggul.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
-                'status_id' => 2,
             ],
             [
                 'name' => 'Samsung 55" QLED 4K Smart TV',
@@ -92,10 +79,10 @@ class ProductSeeder extends Seeder
                 'condition' => 'Baru',
                 'price' => 8500000,
                 'description' => 'TV pintar Samsung dengan teknologi QLED, resolusi 4K, dan fitur pintar terbaru.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
-                'status_id' => 2,
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 3,
+                'village_id' => fake()->numberBetween(1,83761),
+                'status_id' => 1,
             ],
             [
                 'name' => 'Toyota Fortuner VRZ',
@@ -106,9 +93,9 @@ class ProductSeeder extends Seeder
                 'condition' => 'Bekas',
                 'price' => 550000000,
                 'description' => 'Toyota Fortuner VRZ dengan desain kokoh dan fitur lengkap, siap untuk petualangan.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 2,
+                'village_id' => fake()->numberBetween(1,83761),
                 'status_id' => 1,
             ],
             [
@@ -120,23 +107,9 @@ class ProductSeeder extends Seeder
                 'condition' => 'Baru',
                 'price' => 1200000000,
                 'description' => 'Rumah modern dengan desain minimalis, ruangan luas, dan fasilitas modern.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
-                'status_id' => 2,
-            ],
-            [
-                'name' => 'Nike Air Zoom Pegasus 38 Running Shoes',
-                'brand' => 'Nike',
-                'production_year' => 2022,
-                'type' => 'Sepatu Lari',
-                'color' => 'White / Black / Pure Platinum',
-                'condition' => 'Baru',
-                'price' => 1499000,
-                'description' => 'Sepatu lari dengan teknologi Air Zoom untuk responsivitas dan kenyamanan luar biasa.',
-                'user_id' => random_int(1, 10),
-                'categorie_id' => random_int(1, 7),
-                'image_id' => random_int(1, 10),
+                'user_id' => random_int(2, 7),
+                'sub_categorie_id' => 5,
+                'village_id' => fake()->numberBetween(1,83761),
                 'status_id' => 1,
             ],
         ];

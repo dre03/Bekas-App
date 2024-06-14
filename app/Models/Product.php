@@ -9,19 +9,24 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'brand', 'production_year', 'type', 'color', 'condition', 'price', 'description', 'user_id', 'categorie_id', 'image_id', 'status_id'];
+    protected $fillable = ['name', 'brand', 'production_year', 'type', 'color', 'condition', 'price', 'description', 'user_id', 'sub_categorie_id', 'village_id', 'status_id'];
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function categorie(){
-        return $this->belongsTo(Categorie::class, 'categorie_id', 'id');
+    public function subcategorie(){
+        return $this->belongsTo(SubCategorie::class, 'sub_categorie_id', 'id');
     }
-    public function image(){
-        return $this->hasMany(Image::class, 'image_id', 'id');
+    public function images(){
+        return $this->hasMany(Image::class, 'product_id', 'id');
     }
-
+    
+    public function village()
+    {
+        return $this->belongsTo(Village::class, 'village_id', 'id');
+    }
+    
     public function offers()
     {
         return $this->hasMany(Offer::class, 'product_id', 'id');
@@ -31,4 +36,9 @@ class Product extends Model
     {
         return $this->belongsTo(StatusProduct::class, 'status_id', 'id');
     }
+
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class, 'product_id', 'id');
+    }
+
 }

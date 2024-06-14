@@ -47,13 +47,17 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             @endif
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="" class="logo d-flex align-items-center w-auto">
+                                    <span class="d-none d-lg-block">Bekas</span>
+                                </a>
+                            </div><!-- End Logo -->
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Silahkan Login</h5>
-                                        <p class="text-center small">Masukan username dan password anda</p>
                                     </div>
-                                    <form class="row g-3" action="{{route('auth.login')}}" method="POST">
+                                    <form class="row g-3" action="{{route('authAdminlogin')}}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <div class="col-12">
@@ -74,13 +78,14 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 mb-3">
                                             <button class="btn btn-auth w-100" type="submit">Login</button>
+                                            {{-- <span class="fs-7"><a href="#">Lupa Password?</a></span> --}}
                                         </div>
-                                        <div class="col-12">
+                                        {{-- <div class="col-12">
                                             <p class="small mb-0">Belum punya akun? <a
                                                     href="{{ route('registrasi') }}">Buat Akun</a></p>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                 </div>
                             </div>

@@ -504,6 +504,7 @@ h6 {
   align-items: center;
   padding: 15px 10px;
   transition: 0.3s;
+  background-color: #8eb5d32a;
 }
 
 .header-nav .notifications .notification-item i {
@@ -524,7 +525,7 @@ h6 {
 }
 
 .header-nav .notifications .notification-item:hover {
-  background-color: #f6f9ff;
+  background-color: #fff;
 }
 
 .header-nav .messages {
@@ -1243,4 +1244,17 @@ h6 {
 .col-12 .btn.btn-auth{
   background-color: var(--main-color) !important;
   color: #fff;
+}
+
+.btn-main{
+  background-color: var(--main-color);
+  color: #fff;
+}
+.btn-main:hover{
+  background-color: #223546;
+  color: #fff;
+}
+
+.notification-item.clicked {
+  background-color: #fff !important;
 }

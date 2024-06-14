@@ -15,20 +15,24 @@ class CategorieSeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Motor'
+                'name' => 'Kendaraan',
+                'image' => 'https://source.unsplash.com/random'
             ], [
-                'name' => 'Mobil'
+                'name' => 'Elektronik & Gedget',
+                'image' => 'https://source.unsplash.com/random'
             ], [
-                'name' => 'Elektronik & Gedget'
+                'name' => 'Properti',
+                'image' => 'https://source.unsplash.com/random'
             ], [
-                'name' => 'Properti'
+                'name' => 'Olahraga & Hobi',
+                'image' => 'https://source.unsplash.com/random'
             ], [
-                'name' => 'Olahraga & Hobi'
+                'name' => 'Perlengkapan Bayi & Anak',
+                'image' => 'https://source.unsplash.com/random'
             ], [
-                'name' => 'Perlengkapan Bayi & Anak'
-            ], [
-                'name' => 'Peralatan Rumah'
-            ]
+                'name' => 'Peralatan Rumah',
+                'image' => 'https://source.unsplash.com/random'
+            ],
         ];
 
         foreach ($categories as $key => $val) {

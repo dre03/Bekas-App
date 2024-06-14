@@ -3,12 +3,16 @@
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>{{ $title }}</h1>
-            {{-- @if (session('lengkapiProfile'))
-                <div class="alert alert-warning">
-                    {{ session('lengkapiProfile') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            @if (session('lengkapiProfile'))
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-warning d-flex justify-content-between">
+                        {{ session('lengkapiProfile') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 </div>
-            @endif --}}
+            </div>
+            @endif
         </div><!-- End Page Title -->
         <section class="section dashboard">
             <div class="row">
@@ -100,7 +104,7 @@
                                 }
                                 return number_format($nilai, 1, ',', '.') . $suffix[$i];
                             }
-                            $totalSalesF = formatUang($totalSales);
+                            $totalSalesFormat = formatUang($totalSales);
                         @endphp
 
                         <!-- Revenue Card -->
@@ -129,7 +133,7 @@
                                             <i class="bi bi-currency-dollar"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>Rp. {{ $totalSalesF }}</h6>
+                                            <h6>Rp. {{ $totalSalesFormat }}</h6>
                                             <span class="text-success small pt-1 fw-bold">8%</span> <span
                                                 class="text-muted small pt-2 ps-1">meningkat</span>
                                         </div>

@@ -22,9 +22,9 @@ return new class extends Migration
             $table->double('price');
             $table->longText('description');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('categorie_id')->constrained('categories');
-            $table->foreignId('image_id')->constrained('images');
+            $table->foreignId('sub_categorie_id')->constrained('sub_categories');
             $table->foreignId('status_id')->constrained('status_products');
+            $table->foreignId('village_id')->constrained('villages')->nullable()->default(null);
             $table->timestamps();
         });
     }

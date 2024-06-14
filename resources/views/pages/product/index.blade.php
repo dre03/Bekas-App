@@ -2,7 +2,7 @@
 @section('content')
     <main id="main" class="main">
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success d-flex justify-content-between">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -18,92 +18,94 @@
         </div><!-- End Page Title -->
         <section class="section dashboard">
             <div class="row">
-                <div class="col-md-12 col-md-6">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{$title}}</h5>
-                            <table class="table datatable">
-                                <thead class="text-center">
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Merek</th>
-                                        <th>Kondisi</th>
-                                        <th>Harga</th>
-                                        <th>Status</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center">
-                                    @foreach ($products as $i => $item)
+                            <div class="table-responsive">
+                                <table class="table datatable">
+                                    <thead class="text-center">
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->brand }}</td>
-                                            <td>{{ $item->condition }}</td>
-                                            <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
-                                            <td>
-                                                @php
-                                                    $optionClass = '';
-                                                    $label = '';
-                                                @endphp
-                                                @if ($item->statusProduct->status == 'Terjual')
-                                                    @php
-                                                        $optionClass = 'btn btn-success';
-                                                        $label = 'Terjual';
-                                                    @endphp
-                                                @elseif ($item->statusProduct->status == 'Dijual')
-                                                    @php
-                                                        $optionClass = 'btn btn-warning';
-                                                        $label = 'Dijual';
-                                                    @endphp
-                                                @endif
-                                                @if ($item->statusProduct->status === 'Terjual')
-                                                    <button class="badge {{ $optionClass }}" style="width: 100%">{{ $label }}</button>
-                                                @else
-                                                    <form id="updateStatus{{ $item->id }}"
-                                                        action="{{ route('product.updateStatus', $item->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <select name="status" id="status{{ $item->id }}"
-                                                            class="badge form-select form-select-sm {{ $optionClass }} text-white fw-bold"
-                                                            onchange="submitForm('{{ $item->id }}')">
-                                                            @php
-                                                                $optionClass = '';
-                                                            @endphp
-                                                            @foreach ($statusProducts as $status)
-                                                                @if ($status->status === 'Terjual')
-                                                                    @php
-                                                                        $optionClass = 'bg-success';
-                                                                    @endphp
-                                                                @elseif ($status->status === 'Dijual')
-                                                                    @php
-                                                                        $optionClass = 'bg-warning';
-                                                                    @endphp
-                                                                @endif
-                                                                <option class="badge {{ $optionClass }} text-white"
-                                                                    value="{{ $status->id }}"
-                                                                    {{ $item->statusProduct->status == $status->status ? 'selected' : '' }}>
-                                                                    {{ $status->status }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </form>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                    action="{{ route('product.delete', $item->id) }}" method="POST">
-                                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal{{$item->id}}"><i class="bi bi-eye-fill"></i></button>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    {{-- <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button> --}}
-                                                </form>
-                                            </td>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            {{-- <th>Merek</th> --}}
+                                            <th>Kondisi</th>
+                                            <th>Harga</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        @foreach ($products as $i => $item)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                {{-- <td>{{ $item->brand }}</td> --}}
+                                                <td>{{ $item->condition }}</td>
+                                                <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
+                                                <td>
+                                                    @php
+                                                        $optionClass = '';
+                                                        $label = '';
+                                                    @endphp
+                                                    @if ($item->statusProduct->status == 'Terjual')
+                                                        @php
+                                                            $optionClass = 'btn btn-success';
+                                                            $label = 'Terjual';
+                                                        @endphp
+                                                    @elseif ($item->statusProduct->status == 'Dijual')
+                                                        @php
+                                                            $optionClass = 'btn btn-warning';
+                                                            $label = 'Dijual';
+                                                        @endphp
+                                                    @endif
+                                                    @if ($item->statusProduct->status === 'Terjual')
+                                                        <button class="badge {{ $optionClass }}" style="width: 100%">{{ $label }}</button>
+                                                    @else
+                                                        <form id="updateStatus{{ $item->id }}"
+                                                            action="{{ route('product.updateStatus', $item->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <select name="status" id="status{{ $item->id }}"
+                                                                class="badge form-select form-select-sm {{ $optionClass }} text-white fw-bold"
+                                                                onchange="submitForm('{{ $item->id }}')">
+                                                                @php
+                                                                    $optionClass = '';
+                                                                @endphp
+                                                                @foreach ($statusProducts as $status)
+                                                                    @if ($status->status === 'Terjual')
+                                                                        @php
+                                                                            $optionClass = 'bg-success';
+                                                                        @endphp
+                                                                    @elseif ($status->status === 'Dijual')
+                                                                        @php
+                                                                            $optionClass = 'bg-warning';
+                                                                        @endphp
+                                                                    @endif
+                                                                    <option class="badge {{ $optionClass }} text-white"
+                                                                        value="{{ $status->id }}"
+                                                                        {{ $item->statusProduct->status == $status->status ? 'selected' : '' }}>
+                                                                        {{ $status->status }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </form>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                                        action="{{ route('product.delete', $item->id) }}" method="POST">
+                                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#productModal{{$item->id}}"><i class="bi bi-eye-fill"></i></button>
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        {{-- <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button> --}}
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,7 +147,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <p><span>Harga</span><span class="float-end">Rp. {{ number_format($item->price, 0, ',', '.') }}</span></p>
-                                    <p><span>Kategori </span><span class="float-end">{{ $item->categorie->name }}</span>
+                                    <p><span>Kategori </span><span class="float-end">{{ $item->subcategorie->categorie->name }}</span>
                                     </p>
                                     <p><span>Penjual </span><span class="float-end">{{ $item->user->name }}</span></p>
                                 </div>
