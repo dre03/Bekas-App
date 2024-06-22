@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="col-sm-4 ip-wrapper align-items-center mt-3">
-                <button type="button" class="btn btn-primary btn-sm me-2">Nego</button>
+                {{-- <button type="button" class="btn btn-primary btn-sm me-2">Nego</button> --}}
                 @php
                     $wishlist = Auth::user()
                         ->wishlists->where('product_id', $product->id)
@@ -98,8 +98,7 @@
                     </button>
                 </form>
                 <a href="https://wa.me/62{{$product->user->phone_number}}?text=Saya%20berminat%20dengan%20iklan%20anda" class="btn-nego-svg"
-                    target="_blank">
-                    <img src="{{ asset('asset_FE/svg/whatsapp.svg') }}" alt="">
+                    target="_blank"><img src="{{ asset('asset_FE/svg/whatsapp.svg') }}" alt="">
                 </a>
 
             </div>

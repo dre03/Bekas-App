@@ -287,7 +287,7 @@
                                         @php
                                             $wishlist = Auth::user()->wishlists->where('product_id', $product->id)->first();
                                         @endphp
-                                        <form class="wishlist-form" method="POST" action="">
+                                        <form class="wishlist-form" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                                             <button type="submit" class="btn-wishlist">

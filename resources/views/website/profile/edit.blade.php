@@ -24,7 +24,7 @@
         <hr class="sell-line">
         <div class="tabs">
             <div class="tab-links">
-                <div class="tab-link active">Info Profile</div>
+                <div class="tab-link active">Edit Profile</div>
             </div>
             <div class="tab-content">
                 <div id="tab1" class="tab active">
@@ -128,6 +128,7 @@
         </div>
     </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const changeProfileBtn = document.getElementById('changeProfileBtn');

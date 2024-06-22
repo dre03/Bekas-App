@@ -83,8 +83,4 @@ Route::middleware('isUser')->group(function(){
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('web.profile.update');
     Route::get('/user/seller/{id}', [ProfileController::class, 'seller'])->name('web.profile.seller');
 
-    Route::get('/nego', function(){
-        return view('website.nego.index');
-    });
-
 });
